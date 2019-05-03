@@ -18,8 +18,6 @@ export class MoviesComponent {
   public x: Movie = new Movie();
   public y: Movie = new Movie();
 
-
-
   public cast = "";
   public director = "";
 
@@ -59,28 +57,30 @@ export class MoviesComponent {
     if (this.x.title && this.y.title) {
       // this
     }
+    this.x.winner = false;
+    this.y.winner = false;
 
   }
 
 
   compare() {
 
-    let comperable = false;
+    let comparable = false;
 
     for (let genre of this.x.genre_ids) {
       if (this.y.genre_ids.indexOf(genre) > -1) {
-        comperable = true;
+        comparable = true;
       }
     }
 
 
     for (let genre of this.y.genre_ids) {
       if (this.x.genre_ids.indexOf(genre) > -1) {
-        comperable = true;
+        comparable = true;
       }
     }
 
-    if (comperable == false) {
+    if (comparable == false) {
       this.error = "Nem összehasonlítható";
       return;
     }
@@ -108,13 +108,14 @@ export class MoviesComponent {
 
     this.movieService.getCredits(w).subscribe(json => {
       if (json == undefined) return;
+      this.director = "";
+      this.cast = "";
       this.director = json.crew[0].name;
       for (let cast of json.cast.slice(0, 5)) {
         this.cast = this.cast + cast.name + ", ";
       }
       this.cast = this.cast.slice(0, -2);
     });
-
   }
 
 
@@ -136,6 +137,15 @@ export class MoviesComponent {
     this.error = "";
     this.x = new Movie();
     this.y = new Movie();
+  }
+
+  remove_y(){
+    this.error = "";
+    this.y = new Movie();
+  }
+  remove_x(){
+    this.error = "";
+    this.x = new Movie();
   }
 
 

@@ -3,32 +3,38 @@
         <div class="six wide column">
             <div class="ui card" *ngIf="x.title">
                 <div class="ui image">
-                    <img
-                        [src]="'https://image.tmdb.org/t/p/w400'+x.poster_path">
+                    <img [src]="'https://image.tmdb.org/t/p/w400'+x.poster_path">
                 </div>
                 <div class="content">
                     <a class="header"> {{x.title}}</a>
                     <div class="description" *ngIf="x.winner">
+                        Main cast:
+                        <br>
                         {{cast}}
                         <br>
+                        <br>
+                        Director:
                         <br>
                         {{director}}
                         <br>
                         <br>
+                        Story:
+                        <br>
                         {{x.overview}}
+                        <br>
                     </div>
                     <div class="extra content">
-                        <i class="massive green check circle outline icon"
-                            *ngIf="x.winner"></i>
-
+                        <i class="massive green check circle outline icon" *ngIf="x.winner"></i>
                     </div>
+                </div>
+                <div class="extra content" *ngIf="!x.winner && !y.winner">
+                    <button class="ui button" (click)="remove_x()">Remove</button>
                 </div>
             </div>
         </div>
         <div class="four wide column">
             <div *ngIf="x.title && y.title">
-                <button class="ui labeled icon fluid button"
-                    (click)="compare()">
+                <button class="ui labeled icon fluid button" (click)="compare()">
                     <i class="exchange icon"></i>
                     Compare
                 </button>
@@ -37,34 +43,40 @@
             </div>
             <br>
             <br>
-            <button class="ui labeled icon fluid button" (click)="reset()"
-                *ngIf="x.title || y.title">
+            <button class="ui labeled icon fluid button" (click)="reset()" *ngIf="x.title || y.title">
                 <i class="redo icon"></i>
-                reset
+                Reset
             </button>
         </div>
         <div class="six wide column">
             <div class="ui card" *ngIf="y.title" style="float: right;">
                 <div class="ui image">
-                    <img
-                        [src]="'https://image.tmdb.org/t/p/w400'+y.poster_path">
+                    <img [src]="'https://image.tmdb.org/t/p/w400'+y.poster_path">
                 </div>
                 <div class="content">
                     <a class="header"> {{y.title}}</a>
                     <div class="description" *ngIf="y.winner">
+                        Main cast:
+                        <br>
                         {{cast}}
                         <br>
+                        <br>
+                        Director:
                         <br>
                         {{director}}
                         <br>
                         <br>
+                        Story:
+                        <br>
                         {{y.overview}}
+                        <br>
                     </div>
                     <div class="extra content">
-                        <i class="massive green check circle outline icon"
-                            *ngIf="y.winner"></i>
-
+                        <i class="massive green check circle outline icon" *ngIf="y.winner"></i>
                     </div>
+                </div>
+                <div class="extra content" *ngIf="!x.winner && !y.winner">
+                    <button class="ui button" (click)="remove_y()">Remove</button>
                 </div>
             </div>
         </div>
@@ -74,14 +86,13 @@
             <div class="ui four cards">
                 <div class="ui card" *ngFor="let movie of movies">
                     <div class="ui image">
-                        <img
-                            [src]="'https://image.tmdb.org/t/p/w400'+movie.poster_path">
+                        <img [src]="'https://image.tmdb.org/t/p/w400'+movie.poster_path">
                     </div>
                     <div class="content">
                         <a class="header"> {{movie.title}}</a>
                         <div class="meta">
                             <span class="genre" *ngFor="let genre of
-                                movie.genres">{{genre}},</span>
+                                movie.genres">{{genre}}</span>
                         </div>
                     </div>
                     <div class="extra content">
