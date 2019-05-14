@@ -10,6 +10,7 @@ import { FooterComponent } from './components/footer.component/footer.component'
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
+import {MatButtonModule} from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { FormsModule } from '@angular/forms';
   ],
   imports: [
     BrowserModule,
+    MatButtonModule,
     HttpClientModule,
     RouterModule.forRoot(APP_ROUTES),
     BrowserAnimationsModule,

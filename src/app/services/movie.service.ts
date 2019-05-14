@@ -56,20 +56,6 @@ export class MovieService {
         return ret;
     }
 
-
-
-    searchMovie(name: string): BehaviorSubject<Array<Movie>> {
-        let ret = new BehaviorSubject(new Array<Movie>());
-        this.httpClient.get('https://api.themoviedb.org/3/search/movie?api_key=' + API_KEY + '&sort_by=popularity.desc&query=' + name).subscribe((json: any) => {
-            if (json !== undefined && json != null) {
-                if (json.results) {
-                    ret.next(this.proccessJson(json.results));
-                }
-            }
-        });
-        return ret;
-    }
-
     proccessJson(json: string): Array<Movie> {
         let movies = new Array<Movie>();
         for (let movie of json) {

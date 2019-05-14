@@ -24,7 +24,6 @@ export class MoviesComponent {
   constructor(private movieService: MovieService) {
     this.loadMovies(this.year, this.pageIndex);
   }
-  //
 
   loadMovies(year: number, pageIndex: number) {
     this.loaded = false;
@@ -117,21 +116,6 @@ export class MoviesComponent {
       this.cast = this.cast.slice(0, -2);
     });
   }
-
-
-  searchMovies() {
-    /* this.loaded = false;
-     this.movieService.searchMovie(this.searchInput).subscribe(movies => {
-       this.movies = new Array<Movie>();
-       if (movies.length > 0) {
-         for (let movie of movies) {
-           this.movies.push(movie);
-         }
-         this.loaded = true;
-       }
-     });*/
-  }
-
 
   reset() {
     this.error = "";

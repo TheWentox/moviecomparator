@@ -24,17 +24,17 @@
                         <br>
                     </div>
                     <div class="extra content">
-                        <i class="massive green check circle outline icon" *ngIf="x.winner"></i>
+                        <i [ngClass] = "'green'" class="massive check circle outline icon" *ngIf="x.winner"></i>
                     </div>
                 </div>
                 <div class="extra content" *ngIf="!x.winner && !y.winner">
-                    <button class="ui button" (click)="remove_x()">Remove</button>
+                    <button mat-button [ngClass] = "'red'"  class="ui button" (click)="remove_x()">Remove</button>
                 </div>
             </div>
         </div>
         <div class="four wide column">
             <div *ngIf="x.title && y.title">
-                <button class="ui labeled icon fluid button" (click)="compare()">
+                <button mat-button class="ui labeled icon fluid button" (click)="compare()">
                     <i class="exchange icon"></i>
                     Compare
                 </button>
@@ -43,7 +43,7 @@
             </div>
             <br>
             <br>
-            <button class="ui labeled icon fluid button" (click)="reset()" *ngIf="x.title || y.title">
+            <button mat-button class="ui labeled icon fluid button" (click)="reset()" *ngIf="x.title || y.title">
                 <i class="redo icon"></i>
                 Reset
             </button>
@@ -72,11 +72,11 @@
                         <br>
                     </div>
                     <div class="extra content">
-                        <i class="massive green check circle outline icon" *ngIf="y.winner"></i>
+                        <i [ngClass] = "'green'" class="massive green check circle outline icon" *ngIf="y.winner"></i>
                     </div>
                 </div>
                 <div class="extra content" *ngIf="!x.winner && !y.winner">
-                    <button class="ui button" (click)="remove_y()">Remove</button>
+                    <button mat-button class="ui button" [ngClass] = "'red'" (click)="remove_y()">Remove</button>
                 </div>
             </div>
         </div>
@@ -96,7 +96,7 @@
                         </div>
                     </div>
                     <div class="extra content">
-                        <button class="ui button" (click)="pick(movie)">Pick</button>
+                        <button mat-button class="ui button" [ngClass]="'blue'" (click)="pick(movie)">Pick</button>
                     </div>
                 </div>
             </div>
@@ -105,7 +105,7 @@
     </div>
     <div class="row">
         <div class="sixteen wide column">
-            <button class="ui right labeled icon button" (click)="nextPage()">
+            <button mat-button class="ui right labeled icon button" (click)="nextPage()">
                 <i class="right arrow icon"></i>
                 Next
             </button>
